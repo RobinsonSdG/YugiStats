@@ -17,7 +17,7 @@ def main(deck_txt, n, deck_name):
 # Using 25000 so it runs quicker as this is an online IDE
 #main("D:\Documents\Code\YugiStats\Decks\Virtual_World\Decklists\Virtual_World_3Pr_2De.txt", 100000)
 main("D:\Documents\Code\YugiStats\Decks\Virtual_World\Decklists\Virtual_World_Rob.txt", 100000, "vw")
-#main("D:\Documents\Code\YugiStats\Decks\Virtual_World\Decklists\Virtual_World.test.txt", 100000)
-#main("D:\Documents\Code\YugiStats\Decks\Prankids\Decklists\Prankids.ydk.txt", 100000, "pk")
+#main("D:\Documents\Code\YugiStats\Decks\Virtual_World\Decklists\Virtual_World.test.txt", 100000, "vw")
+main("D:\Documents\Code\YugiStats\Decks\Prankids\Decklists\Prankids.ydk.txt", 100000, "pk")
 
 

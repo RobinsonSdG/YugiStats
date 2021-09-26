@@ -6,7 +6,6 @@ PSY-Framegear Gamma
 PSY-Framegear Gamma
 Virtual World Hime - Nyannyan
 Virtual World Hime - Nyannyan
-Virtual World Hime - Nyannyan
 Virtual World Kirin - Lili
 Virtual World Kirin - Lili
 Virtual World Kirin - Lili
@@ -20,21 +19,22 @@ Virtual World Xiezhi - Jiji
 Virtual World Xiezhi - Jiji
 Virtual World Xiezhi - Jiji
 PSY-Frame Driver
-Called by the Grave
 Emergency Teleport
 Emergency Teleport
 Pot of Desires
-Pot of Desires
-Pot of Desires
 Pot of Prosperity
 Pot of Prosperity
+Pot of Prosperity
+Pot of Desires
 Virtual World City - Kauwloon
 Virtual World City - Kauwloon
 Virtual World City - Kauwloon
 Virtual World Gate - Qinglong
 Virtual World Gate - Qinglong
 Virtual World Gate - Qinglong
-Upstart Goblin
+Infinite Impermanence
+Infinite Impermanence
+Infinite Impermanence
 Virtual World Gate - Chuche
 Virtual World Gate - Chuche
 Virtual World Gate - Xuanwu

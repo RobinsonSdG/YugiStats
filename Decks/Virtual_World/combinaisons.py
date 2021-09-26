@@ -11,6 +11,8 @@ def vw_hand_is_combo(hand, deck, desires, prosperity):
     lvl3 = cards_of_set_in_hand(hand, vw_lvl3)
     lvl6 = cards_of_set_in_hand(hand, vw_lvl6)
     extenders = cards_of_set_in_hand(hand, vw_extenders)
+    nb_interupts = 0
+    nb_interupts = cards_of_set_in_hand(hand, interupts)
 
     if not desires and not prosperity: #if desires or prosperity it means that comboing without them was not possible, thus ash beats the hand
         through_ash = hand_through_ash(deck, hand)
@@ -31,21 +33,23 @@ def vw_hand_is_combo(hand, deck, desires, prosperity):
         elif in_hand(hand,"Virtual World Kirin - Lili") and in_hand(hand, "Virtual World Gate - Qinglong"):
             combo = True
     
-    if in_hand(hand, "Pot of Desires") and not desires and not prosperity and combo:
-        deck, hand = pot_of_desires(deck, hand)
-        through_ash = hand_through_ash(deck, hand)
-        desires = True
-    if in_hand(hand, "Pot of Prosperity") and not desires and not prosperity and combo:
+    if in_hand(hand, "Pot of Prosperity") and not desires and not prosperity and combo and not through_ash:
         deck, hand, chosen = pot_of_prosperity(deck, hand)
         if chosen:
             through_ash = hand_through_ash(deck, hand)
         prosperity = True
+    if in_hand(hand, "Upstart Goblin") and not prosperity and combo and not through_ash:
+        hand, deck = upstart_goblin(hand, deck)
+        through_ash = hand_through_ash(deck, hand)
+    if in_hand(hand, "Pot of Desires") and not desires and not prosperity and combo and not through_ash:
+        deck, hand = pot_of_desires(deck, hand)
+        through_ash = hand_through_ash(deck, hand)
+        desires = True
     
     if in_hand(hand, "Pot of Prosperity") and not desires and not prosperity and not combo:
         deck, hand, chosen = pot_of_prosperity(deck, hand)
-        if not chosen: return combo, hts, through_nib, through_ash
+        if not chosen: return combo, hts, through_nib, through_ash, nb_interupts
         return vw_hand_is_combo(hand, deck, desires, prosperity=True)
-
     if in_hand(hand, "Upstart Goblin") and not prosperity and not combo:
         hand, deck = upstart_goblin(hand, deck)
         return vw_hand_is_combo(hand, deck, desires, prosperity=True)
@@ -53,25 +57,23 @@ def vw_hand_is_combo(hand, deck, desires, prosperity):
     if in_hand(hand, "Pot of Desires") and not desires and not prosperity and not combo:
         deck, hand = pot_of_desires(deck, hand)
         return vw_hand_is_combo(hand, deck, desires=True, prosperity=prosperity)
-
-    return combo, hts, through_nib, through_ash
+    
+    return combo, hts, through_nib, through_ash, nb_interupts
 
 def hand_through_ash(deck, hand):
     ash = False
     diff_lvl3 = different_cards_of_set_in_hand(hand, vw_lvl3)
     diff_lvl6 = different_cards_of_set_in_hand(hand, vw_lvl6)
     extenders = cards_of_set_in_hand(hand, vw_extenders)
+    ah = cards_of_set_in_hand(hand, anti_hts)
+    if in_hand(hand, ah):
+        return True
     if diff_lvl3 + diff_lvl6 >=3:
         return True
-    if diff_lvl3>=2 and extenders >= 1:
+    if diff_lvl3+diff_lvl6 >= 2 and extenders >= 1:
         return True
-    if diff_lvl3>=1 and diff_lvl6 and extenders >= 1:
+    if in_hand(hand,"Virtual World Mai-Hime - Lulu") and in_hand(hand, "Virtual World Gate - Qinglong") and (in_hand(hand,"Virtual World Kirin - Lili") or (in_hand(hand, "Virtual World Xiezhi - Jiji"))):
         return True
-    if in_hand(hand, "Called by the Grave"):
-        return True
-    if in_hand(hand, "Upstart Goblin"):
-        hand, deck = upstart_goblin(hand, deck)
-        hand_through_ash(deck, hand)
     return ash
     
 def pot_of_prosperity(deck, hand):

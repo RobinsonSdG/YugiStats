@@ -49,6 +49,13 @@ def different_cards_of_set_in_hand(hand, card_set):
             diff += 1
     return number_card_of_set_in_hand
 
+def triple_tactics_talent(deck, hand):
+    hand.remove("Triple Tactics Talent")
+    draws, deck = draw(deck, 2)
+    for card in draws:
+        hand.append(card)
+    return deck, hand
+
 def pot_of_desires(deck, hand):
     hand.remove("Pot of Desires")
     for i in range(10):

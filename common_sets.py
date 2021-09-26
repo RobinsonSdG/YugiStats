@@ -9,3 +9,5 @@ opt_handtraps = ["Nibiru, the Primal Being", "Fantastical Dragon Phantazmay","Gh
 
 interupts = handtraps + ["Called by the Grave", "PSY-Framegear Gamma"]
 
+anti_hts = ["Called by the Grave"+ "Crossout Designator"]
+
