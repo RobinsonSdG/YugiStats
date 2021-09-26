@@ -108,3 +108,5 @@ def pot_of_prosperity(deck, hand):
     #     if vw_hand_is_combo(hand, deck, desires, prosperity=True)[0]:
     #         print(hand)
     #     return vw_hand_is_combo(hand, deck, desires, prosperity)
+
+    #manque le cas si prospe et desires et pas combo avant pour ash
